@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>FocusButton.qml</file>
+        <file>CustomFocusScope.qml</file>
+    </qresource>
+</RCC>

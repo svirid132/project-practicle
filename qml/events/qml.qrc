@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Default.qml</file>
+        <file>PropagateComposedEvents.qml</file>
+        <file>AliasChild.qml</file>
+    </qresource>
+</RCC>
