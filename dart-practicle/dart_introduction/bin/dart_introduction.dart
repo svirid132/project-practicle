@@ -3,6 +3,7 @@ import 'package:dart_introduction/collections.dart';
 import 'package:dart_introduction/variables.dart';
 import 'package:dart_introduction/records.dart';
 import 'package:dart_introduction/class.dart';
+import 'package:dart_introduction/class_methods.dart';
 import 'package:dart_introduction/generic.dart';
 
 void main() {
@@ -10,6 +11,7 @@ void main() {
   // recorder();
   // collections();
   // funcClass();
+  // generic();
 
-  generic();
+  classMethod();
 }

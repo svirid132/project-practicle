@@ -1,3 +1,5 @@
+import 'dart:math';
+
 const double xOrigin = 0;
 const double yOrigin = 0;
 
