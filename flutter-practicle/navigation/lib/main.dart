@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:layout/container_layout_widget.dart';
-import 'package:layout/grid_layout_widget.dart';
-import 'package:layout/center_widget.dart';
+import 'package:navigation/set_data_new_screen/to_do.dart';
+import 'package:navigation/set_data_new_screen/todos_screen.dart';
+import 'navigate/first_route.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,7 +9,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
 
   // This widget is the root of your application.
   @override
@@ -20,12 +19,16 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      // home: const ContainerLayout(),
-      // home: GridLayout()
-      home: Container(
-          decoration: const BoxDecoration(color: Colors.grey),
-          child: CenterWidget()
-      )
+      // home: FirstRoute(),
+      home: TodosScreen(
+        todos: List.generate(
+          20,
+              (i) => Todo(
+            'Todo $i',
+            'A description of what needs to be done for Todo $i',
+          ),
+        ),
+      ),
     );
   }
 }
