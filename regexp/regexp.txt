@@ -6,5 +6,19 @@ https://regex101.com/r/owxr5H/1
 12.12.1920
 2.12.1900
 
+^<[ ]*
+
+Примеры
+<    fsfsdfsg
+<fsl;dkf;sldkf
+
+[ ].*>$
+
+Пример:
+fsdff;lsdk gd ggdgdt >
+
+
+
+
 
 

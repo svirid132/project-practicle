@@ -8,4 +8,80 @@
 <r><t>}'</t></r>
 
 Картинка
-Просто меняет в word/media/... на другую кратинку с тем же названием
+Возмодности: 
+1) Можно поменять в word/media/... на другую кратинку с тем же названием
+2) Возможность добавить новую картинку в документ
+<w:p w14:paraId="0CFA83B7" w14:textId="019BC6FF" w:rsidR="00C25D88" w:rsidRDefault="00C25D88">
+	<w:r>
+		<w:rPr>
+			<w:noProof/>
+		</w:rPr>
+		<w:drawing>
+			<wp:inline distT="0" distB="0" distL="0" distR="0" wp14:anchorId="502DCB00" wp14:editId="31F77912">
+				<wp:extent cx="5940425" cy="4192905"/>
+				<wp:effectExtent l="0" t="0" r="3175" b="0"/>
+				<wp:docPr id="5" name="Рисунок 5"/>
+				<wp:cNvGraphicFramePr>
+					<a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/>
+				</wp:cNvGraphicFramePr>
+				<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+					<a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+						<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+							<pic:nvPicPr>
+								<pic:cNvPr id="4" name="Рисунок 4"/>
+								<pic:cNvPicPr/>
+							</pic:nvPicPr>
+							<pic:blipFill>
+								<a:blip r:embed="rId6">
+									<a:extLst>
+										<a:ext uri="{28A0092B-C50C-407E-A947-70E740481C1C}">
+											<a14:useLocalDpi xmlns:a14="http://schemas.microsoft.com/office/drawing/2010/main" val="0"/>
+										</a:ext>
+									</a:extLst>
+								</a:blip>
+								<a:stretch>
+									<a:fillRect/>
+								</a:stretch>
+							</pic:blipFill>
+							<pic:spPr>
+								<a:xfrm>
+									<a:off x="0" y="0"/>
+									<a:ext cx="5940425" cy="4192905"/>
+								</a:xfrm>
+								<a:prstGeom prst="rect">
+									<a:avLst/>
+								</a:prstGeom>
+							</pic:spPr>
+						</pic:pic>
+					</a:graphicData>
+				</a:graphic>
+			</wp:inline>
+		</w:drawing>
+	</w:r>
+</w:p>
+// объясняющий текст 
+<wp:docPr id="5" name="Рисунок 5"/> - меняется при вставке даже одинаковых данных о картинке
+<pic:cNvPr id="4" name="Рисунок 4"/> - сслыется на кратинку по word/rels/document.xml.rels
+<a:blip r:embed="rId6"> - ссылается на картинку по rId из word/rels/document.xml.rels
+из всех параметров важным является rId6, можно только его менять, чтобы сменилась ссылка на картинку
+
+word/rels/document.xml.rels - хранит ссылки на файлы 
+<Relationship Id="rId6" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/image2.png"/> - хранение картинки
+
+Создание нового раздела.
+<w:p w14:paraId="1F354797" w14:textId="59B78709" w:rsidR="00FB3650" w:rsidRDefault="000F2127" w:rsidP="00FB3650">
+	<w:r>
+		<w:t>123</w:t>
+	</w:r>
+	<w:r w:rsidR="00FB3650">
+		<w:br w:type="page"/>
+	</w:r>
+</w:p> // в последнем абзаце должно быть <w:r><w:br w:type="page"/></w:r>
+<w:p w14:paraId="1F354797" w14:textId="6B529CF0" w:rsidR="00C4212A" w:rsidRPr="000F2127" w:rsidRDefault="000F2127" w:rsidP="000F2127">
+	<w:r>
+		<w:lastRenderedPageBreak/>
+		<w:t>321</w:t>
+	</w:r>
+</w:p> // абзац нового раздела должен иметь <w:lastRenderedPageBreak/>
+
+XML tools - плагин для vs code, форматирует и минимизирует формат текста

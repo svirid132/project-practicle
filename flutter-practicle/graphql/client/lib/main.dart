@@ -1,55 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
 
-final graphqlEndpoint = 'http://localhost:4000/graphql';
-
-Future<void> main() async {
-  await initHiveForFlutter();
-
-  // final HttpLink httpLink = HttpLink(
-  //   'https://api.github.com/graphql',
-  // );
-  //
-  // final AuthLink authLink = AuthLink(
-  //   getToken: () async => '',
-  //   // OR
-  //   // getToken: () => 'Bearer <YOUR_PERSONAL_ACCESS_TOKEN>',
-  // );
-  //
-  // final Link link = authLink.concat(httpLink);
-
-  GraphQLClient client = GraphQLClient(
-      link: HttpLink('https://api.github.com/graphql'),
-      cache: GraphQLCache(store: HiveStore()),
-    );
-
-  runApp(const MyApp( ));
+void main() {
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // final GraphQLClient client;
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
-    ValueNotifier<GraphQLClient> client = ValueNotifier(GraphQLClient(
-      link: HttpLink('http://localhost:4000/graphql'),
-      cache: GraphQLCache(store: HiveStore()),
-    ));
-
-    return GraphQLProvider(
-      client: client,
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        // This is the theme of your application.
+        //
+        // TRY THIS: Try running your application with "flutter run". You'll see
+        // the application has a blue toolbar. Then, without quitting the app,
+        // try changing the seedColor in the colorScheme below to Colors.green
+        // and then invoke "hot reload" (save your changes or press the "hot
+        // reload" button in a Flutter-supported IDE, or press "r" if you used
+        // the command line to start the app).
+        //
+        // Notice that the counter didn't reset back to zero; the application
+        // state is not lost during the reload. To reset the state, use hot
+        // restart instead.
+        //
+        // This works for code too, not just values: Most code changes can be
+        // tested with just a hot reload.
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
       ),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -86,12 +68,14 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  static const String query = '''{
-      hello
-    }''';
-
   @override
   Widget build(BuildContext context) {
+    // This method is rerun every time setState is called, for instance as done
+    // by the _incrementCounter method above.
+    //
+    // The Flutter framework has been optimized to make rerunning build methods
+    // fast, so that you can just rebuild anything that needs updating rather
+    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
         // TRY THIS: Try changing the color here to a specific color (to
@@ -128,40 +112,6 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-        Query(
-          options: QueryOptions(
-            document: gql(query), // this is the query string you just created
-            variables: {
-              'hello': 1,
-            },
-            pollInterval: const Duration(seconds: 10),
-          ),
-          // Just like in apollo refetch() could be used to manually trigger a refetch
-          // while fetchMore() can be used for pagination purpose
-          builder: (QueryResult result, { VoidCallback? refetch, FetchMore? fetchMore }) {
-            if (result.hasException) {
-              return Text(result.exception.toString());
-            }
-
-            if (result.isLoading) {
-              return const Text('Loading');
-            }
-
-            List? repositories = result.data?['viewer']?['repositories']?['nodes'];
-
-            if (repositories == null) {
-              return const Text('No repositories');
-            }
-
-            return ListView.builder(
-                itemCount: repositories.length,
-                itemBuilder: (context, index) {
-                  final repository = repositories[index];
-
-                  return Text(repository['name'] ?? '');
-                });
-          },
-        ),
           ],
         ),
       ),
