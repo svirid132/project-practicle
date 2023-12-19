@@ -1,0 +1,12 @@
+Compose
+    tutorial https://developer.android.com/jetpack/compose/tutorial
+    jetpack toolkit https://developer.android.com/jetpack/compose/setup#compose-compiler
+    started https://developer.android.com/jetpack/compose/documentation
+    basic https://developer.android.com/jetpack/compose/layouts/basics#composable-functions
+
+UI widgets
+    button https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary#Button(kotlin.Function0,androidx.compose.ui.Modifier,kotlin.Boolean,androidx.compose.ui.graphics.Shape,androidx.compose.material3.ButtonColors,androidx.compose.material3.ButtonElevation,androidx.compose.foundation.BorderStroke,androidx.compose.foundation.layout.PaddingValues,androidx.compose.foundation.interaction.MutableInteractionSource,kotlin.Function1)
+    image https://developer.android.com/reference/kotlin/androidx/compose/foundation/package-summary#Image(androidx.compose.ui.graphics.ImageBitmap,kotlin.String,androidx.compose.ui.Modifier,androidx.compose.ui.Alignment,androidx.compose.ui.layout.ContentScale,kotlin.Float,androidx.compose.ui.graphics.ColorFilter,androidx.compose.ui.graphics.FilterQuality)
+    
+State
+    state and Jetpack compose https://developer.android.com/jetpack/compose/state
